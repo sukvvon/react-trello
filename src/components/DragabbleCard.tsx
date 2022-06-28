@@ -12,6 +12,15 @@ const Card = styled.div<{ isDragging: boolean }>`
     props.isDragging ? "#74b9ff" : props.theme.cardColor};
   box-shadow: ${(props) =>
     props.isDragging ? "0px 2px 5px rgba(0, 0, 0, 0.05)" : null};
+  display: flex;
+  justify-content: space-between;
+`;
+
+const DeleteButton = styled.button`
+  border: 0;
+  background-color: transparent;
+  color: black;
+  cursor: pointer;
 `;
 
 interface IDragabbleCardProps {
@@ -44,7 +53,7 @@ function DragabbleCard({
           {...provided.dragHandleProps}
         >
           {toDoText}
-          <button onClick={() => deleteToDo(toDoId)}>delete</button>
+          <DeleteButton onClick={() => deleteToDo(toDoId)}>X</DeleteButton>
         </Card>
       )}
     </Draggable>
